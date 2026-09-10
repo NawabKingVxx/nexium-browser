@@ -1,6 +1,0 @@
-{
-  "name": "NEXIUM Browser",
-  "description": "Browse Beyond Limits. Complete futuristic cyber Android web browser with multi-tabs, ad blocker, VPN tunnel manager, download manager, bookmarks, history, and user extensions.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
