@@ -1,0 +1,30 @@
+name: Unzip Nexium Browser
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Unzip nexium-browser.zip
+        run: |
+          mkdir -p extracted
+          unzip -o "nexium-browser.zip" -d extracted
+
+      - name: Show Extracted Files
+        run: |
+          echo "Extracted files:"
+          find extracted -type f
+
+      - name: Commit Extracted Files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add extracted
+          git commit -m "Extract nexium-browser.zip" || echo "No changes to commit"
+          git push
