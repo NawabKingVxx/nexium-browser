@@ -16,23 +16,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Unzip nexium-browser.zip
+      - name: Unzip nexium-browser.zip to Root
         run: |
-          rm -rf extracted
-          mkdir -p extracted
-          unzip -o "nexium-browser.zip" -d extracted
+          unzip -o "nexium-browser.zip" -d .
 
-      - name: Show Extracted Files
+      - name: Remove ZIP File
         run: |
-          find extracted -type f
+          rm -f "nexium-browser.zip"
 
       - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add extracted
+          git add .
 
-          git diff --cached --quiet || git commit -m "Extract nexium-browser.zip"
+          git diff --cached --quiet || git commit -m "Extract Nexium Browser to root"
 
           git push
